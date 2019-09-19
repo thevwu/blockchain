@@ -1,0 +1,67 @@
+#Do everything before ledger created
+
+create-account bob
+process-transaction 1 amount 1000 fee 10 payload "fund account" payer master receiver bob
+Get-account-balance bob
+Get-block 0
+Get-account-balances 
+Get-transaction 1
+Validate
+
+#Do a bunch of faulty actions and syntax
+
+Create-ledger "bitcoin" description "asdfadsfsf seed 12-13!@#cas34
+Create-ledger bitcoin description "the best" seed "1234"
+
+
+Create-ledger bitcoin description "the best" seed "1234"
+
+Create-account bob
+Create-account mary
+Validate
+
+Get-transaction 0
+Get-block 0
+Get-account-balances
+
+process-transaction 124 amount 1000 fee 99999999999 payload "fund account" payer mary receiver bob
+process-transaction 1324 amount 999999999 fee 10 payload "fund account" payer mary receiver bob
+process-transaction 134 amount 1000 fee 3410 payload "fund account" payer mary receiver bob
+process-transaction 14 amount -1000 fee 10 payload "fund account" payer mary receiver bob
+process-transaction -2 amount 1000 fee -6 payload "fund account" payer mary receiver bob
+
+
+process-transaction 1 amount 1000 fee 10 payload "fund account" payer master receiver mary
+process-transaction 2 amount 1000 fee 10 payload "fund account" payer master receiver bob
+process-transaction 3 amount 1000 fee 10 payload "fund account" payer master receiver bill
+process-transaction 4 amount 1000 fee 10 payload "fund account" payer master receiver susan
+process-transaction 5 amount 1000 fee 10 payload "fund account" payer master receiver mary
+
+
+process-transaction 6 amount 1000 fee 10 payload "fund account" payer master receiver bob
+process-transaction 7 amount 1000 fee 10 payload "fund account" payer master receiver bill
+process-transaction 8 amount 1000 fee 10 payload "fund account" payer master receiver susan
+process-transaction 9 amount 1000 fee 10 payload "fund account" payer master receiver mary
+process-transaction 10 amount 1000 fee 10 payload "fund account" payer master receiver bob
+
+Validate
+
+
+process-transaction 11 amount 1000 fee 10 payload "fund account" payer master receiver mary
+process-transaction 21 amount 1000 fee 10 payload "fund account" payer master receiver bob
+process-transaction 31 amount 1000 fee 10 payload "fund account" payer master receiver bill
+process-transaction 41 amount 1000 fee 10 payload "fund account" payer master receiver susan
+process-transaction 51 amount 1000 fee 10 payload "fund account" payer master receiver mary
+
+
+process-transaction 61 amount 1000 fee 10 payload "fund account" payer master receiver bob
+process-transaction 71 amount 1000 fee 10 payload "fund account" payer master receiver bill
+process-transaction 81 amount 1000 fee 10 payload "fund account" payer master receiver susan
+process-transaction 91 amount 1000 fee 10 payload "fund account" payer master receiver mary
+process-transaction 101 amount 1000 fee 10 payload "fund account" payer master receiver bob
+
+Get-block 0
+Get-block 1
+Get-block 2
+
+Validate

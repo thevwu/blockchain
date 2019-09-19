@@ -1,12 +1,14 @@
-package ledger;
+package com.cscie97.ledger;
 import java.util.*;
 
+//This is just an interface I found useful when implementing.
+
 public interface LedgerService {    
-    Account createAccount(String address);
+    String createAccount(String address);
     String processTransaction(Transaction transaction);
     Integer getAccountBalance(String address);
-    HashMap<String, Double> getAccountBalances();
+    HashMap<String, Integer> getAccountBalances();
     Block getBlock(Integer blockNumber);
     Transaction getTransaction(String transactionID);
-    void validate();
+    boolean validate();
 }
